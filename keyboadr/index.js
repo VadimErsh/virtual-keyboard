@@ -8,6 +8,7 @@ const CharLineFour = [16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16]
 const CodeClassFour = ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight']
 const CharLineFive = [17, 91, 18, 32, 18, 37, 40, 39, 17]
 const CodeClassFive = ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight']
+const KeyBoardBody = document.getElementById('keyboard')
 
  const getKeyBoardContent = () => {
 
@@ -165,7 +166,7 @@ const CodeClassFive = ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight'
     }
 
     if (i === 7) {
-      KeyCypFive.innerText = '▶'
+      KeyCypFive.innerText = '►'
     }
 
     if (i === 6) {
@@ -173,7 +174,7 @@ const CodeClassFive = ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight'
     }
 
     if (i === 5) {
-      KeyCypFive.innerText = '◀'
+      KeyCypFive.innerText = '◄'
     }
 
     KeyLineFive.append(KeyCypFive)
@@ -189,23 +190,38 @@ const CodeClassFive = ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight'
   return KeyBoardBlock
 }
 
- const KeyBoardBody = document.getElementById('keyboard')
-const test = document.querySelector('body')
+KeyBoardBody.appendChild(getKeyBoardContent())
 
-console.log(KeyBoardBody.appendChild(getKeyBoardContent()))
+const TextArea = document.querySelector('.textarea')
+const NodeKeys =  document.querySelectorAll('.key')
+const ArrayKeys = Array.from(NodeKeys)
+
+ArrayKeys.forEach((el) => {
+  let result = ''
+
+  el.addEventListener('click' , (event) => {
+    result += event.target.innerHTML
+    TextArea.textContent += result
+    result=''
+  })
+
+  el.addEventListener('mousedown' ,() => {el.classList.add('active')}) 
+  el.addEventListener('mouseup' ,() => {el.classList.remove('active')})  
+
+})
+
+document.addEventListener('keydown' , (event) => {
+
+ 
+  for (let i = 0; i < ArrayKeys.length; i++) { 
+  if (ArrayKeys[i].classList[1] === event.code) { console.log(ArrayKeys[i].textContent)
+    ArrayKeys[i].classList.add('active')
+    document.addEventListener('keyup', () => {ArrayKeys[i].classList.remove('active')})
+
+    TextArea.textContent += ArrayKeys[i].textContent
+  }
+ }
+})
 
 
-
-
-let test2 = []
-let test1 = []
-
-
-document.onkeyup = function (event) {
-  console.log(event)
-  test2.push(event.code)
-  test1.push(event.keyCode)
-  console.log(test2)
-  console.log(test1)
-}
 
