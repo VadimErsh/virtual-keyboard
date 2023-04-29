@@ -24,6 +24,7 @@ const KeyBoardBody = document.getElementById('keyboard')
   TextArea.className = 'textarea'
   TextArea.cols = '50'
   TextArea.rows = '5'
+  TextArea.setAttribute('id','textarea')
   
   KeyBoardBlock.appendChild(TextArea)
 
@@ -232,6 +233,13 @@ ArrayKeys.forEach((el) => {
       TextArea.textContent = TextArea.textContent.slice(0, -1)
     }
 
+    if (event.target.classList[1] === "Delete") { 
+       TextArea.textContent = TextArea.textContent.slice(0,(TextArea.textContent.length) -1)
+    }
+
+    if (event.target.classList[1] === "Enter") { console.log('da')
+    TextArea.textContent = TextArea.textContent + "\n"
+    }
   })
 
   el.addEventListener('mousedown' ,() => {el.classList.add('active')})
@@ -267,6 +275,10 @@ document.addEventListener('keydown' , (event) => {
     if (ArrayKeys[i].classList[1] === "Backspace") {
       TextArea.textContent = TextArea.textContent.slice(0, -1)
     }
+
+    if (ArrayKeys[i].classList[1] === "Enter") { console.log('da')
+    TextArea.textContent = TextArea.textContent + "\n"
+    }
   }
  }
 })
@@ -301,6 +313,7 @@ document.querySelector('.CapsLock').addEventListener('click', () => {
       })
     }
  })
+
 
 
 
