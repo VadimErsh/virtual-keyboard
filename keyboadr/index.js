@@ -240,6 +240,10 @@ ArrayKeys.forEach((el) => {
     if (event.target.classList[1] === "Enter") { console.log('da')
     TextArea.textContent = TextArea.textContent + "\n"
     }
+
+    if (event.target.classList[1] === "Tab") { console.log('da')
+    TextArea.textContent +=   "              "
+    }
   })
 
   el.addEventListener('mousedown' ,() => {el.classList.add('active')})
@@ -276,9 +280,16 @@ document.addEventListener('keydown' , (event) => {
       TextArea.textContent = TextArea.textContent.slice(0, -1)
     }
 
-    if (ArrayKeys[i].classList[1] === "Enter") { console.log('da')
+    if (ArrayKeys[i].classList[1] === "Enter") {
     TextArea.textContent = TextArea.textContent + "\n"
     }
+
+    window.onkeydown = evt => {
+      if (evt.key == 'Tab') {
+          evt.preventDefault();
+          TextArea.textContent +=  "              "
+      }
+  }
   }
  }
 })
