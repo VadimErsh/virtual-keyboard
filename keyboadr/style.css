@@ -80,11 +80,15 @@
   border: 0px;
 }
 
+.CapsLock.activecaps {
+  background-color: #ff9a40;
+  border-radius: 50px;
+}
+
 .Enter {
   width: 85px;
   background-color: #A64E00;
   border: 0px;
-  
 }
 
 .ShiftLeft {
