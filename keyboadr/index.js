@@ -24,6 +24,7 @@ const KeyBoardBody = document.getElementById('keyboard')
   TextArea.className = 'textarea'
   TextArea.cols = '50'
   TextArea.rows = '5'
+  
   KeyBoardBlock.appendChild(TextArea)
 
   const KeyBoard = document.createElement('div')
@@ -226,6 +227,11 @@ ArrayKeys.forEach((el) => {
         TextArea.textContent += result
         result=''
     }
+
+    if (event.target.classList[1] === "Backspace") {
+      TextArea.textContent = TextArea.textContent.slice(0, -1)
+    }
+
   })
 
   el.addEventListener('mousedown' ,() => {el.classList.add('active')})
@@ -256,6 +262,10 @@ document.addEventListener('keydown' , (event) => {
       TextArea.textContent += ''
     } else {
       TextArea.textContent += ArrayKeys[i].textContent
+    }
+
+    if (ArrayKeys[i].classList[1] === "Backspace") {
+      TextArea.textContent = TextArea.textContent.slice(0, -1)
     }
   }
  }
