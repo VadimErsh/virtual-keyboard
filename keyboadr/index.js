@@ -8,6 +8,10 @@ const CharLineFour = [16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38, 16]
 const CodeClassFour = ['ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight']
 const CharLineFive = [17, 91, 18, 32, 18, 37, 40, 39, 17]
 const CodeClassFive = ['ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight', 'ControlRight']
+const CharShiftOne = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace']
+const CharShiftTwo =['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Delete']
+const CharShiftThree =['CapsLock','A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter']
+const CharShiftFour =['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?', 'ArrowUp', 'Shift']
 const KeyBoardBody = document.getElementById('keyboard')
 
  const getKeyBoardContent = () => {
@@ -25,7 +29,7 @@ const KeyBoardBody = document.getElementById('keyboard')
   TextArea.cols = '50'
   TextArea.rows = '5'
   TextArea.setAttribute('id','textarea')
-  
+
   KeyBoardBlock.appendChild(TextArea)
 
   const KeyBoard = document.createElement('div')
@@ -46,13 +50,44 @@ const KeyBoardBody = document.getElementById('keyboard')
   KeyLineOne.className = 'line-one line'
 
   for (let i = 0 ; i < CharLineOne.length ; i++) {
+
     const KeyCypOne = document.createElement('div')
     KeyCypOne.className = `key ${CodeClassOne[i]}`
+
+    document.addEventListener('mousedown' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypOne.innerText = CharShiftOne[i]
+      }
+    })
+
+    document.addEventListener('mouseup' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypOne.innerText = String.fromCharCode(CharLineOne[i])
+      }
+      if (i === 13) {
+        KeyCypOne.innerText = 'Backspace'
+      }
+    })
+
+    document.addEventListener('keydown' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypOne.innerText = CharShiftOne[i]
+      }
+    })
+
+    document.addEventListener('keyup' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypOne.innerText = String.fromCharCode(CharLineOne[i])
+      }
+      if (i === 13) {
+        KeyCypOne.innerText = 'Backspace'
+      }
+    })
+
     KeyCypOne.innerText = String.fromCharCode(CharLineOne[i])
     if (i === 13) {
       KeyCypOne.innerText = 'Backspace'
     }
-
     KeyLineOne.append(KeyCypOne)
 
   }
@@ -64,27 +99,110 @@ const KeyBoardBody = document.getElementById('keyboard')
     const KeyCypTwo = document.createElement('div')
     const classAtribut = CodeClassTwo[i].slice(0,3)
     KeyCypTwo.className = `key ${CodeClassTwo[i]} ${classAtribut}`
+
+    document.addEventListener('mousedown' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypTwo.innerText = CharShiftTwo[i]
+      }
+
+      if (i === 0) {
+        KeyCypTwo.innerText = 'Tab'
+      }
+
+      if (i === 14) {
+        KeyCypTwo.innerText = 'Del'
+      }
+    })
+
+    document.addEventListener('mouseup' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypTwo.innerText = String.fromCharCode(CharLineTwo[i]).toLocaleLowerCase()
+
+        if (i === 0) {
+          KeyCypTwo.innerText = 'Tab'
+        }
+
+        if (i === 14) {
+          KeyCypTwo.innerText = 'Del'
+        }
+
+        if (i === 13) {
+          KeyCypTwo.innerText = "\\"
+        }
+
+        if (i === 12) {
+          KeyCypTwo.innerText = "]"
+        }
+
+        if (i === 11) {
+          KeyCypTwo.innerText = "["
+        }
+      }
+
+    })
+
+    document.addEventListener('keydown' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypTwo.innerText = CharShiftTwo[i]
+      }
+
+      if (i === 0) {
+        KeyCypTwo.innerText = 'Tab'
+      }
+
+      if (i === 14) {
+        KeyCypTwo.innerText = 'Del'
+      }
+    })
+
+
+    document.addEventListener('keyup' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypTwo.innerText = String.fromCharCode(CharLineTwo[i])
+
+        if (i === 0) {
+          KeyCypTwo.innerText = 'Tab'
+        }
+
+        if (i === 14) {
+          KeyCypTwo.innerText = 'Del'
+        }
+
+        if (i === 13) {
+          KeyCypTwo.innerText = "\\"
+        }
+
+        if (i === 12) {
+          KeyCypTwo.innerText = "]"
+        }
+
+        if (i === 11) {
+          KeyCypTwo.innerText = "["
+        }
+      }
+
+    })
     KeyCypTwo.innerText = String.fromCharCode(CharLineTwo[i]).toLocaleLowerCase()
-    
-    if (i === 0) {
-      KeyCypTwo.innerText = 'Tab'
-    }
 
-    if (i === 14) {
-      KeyCypTwo.innerText = 'Del'
-    }
+        if (i === 0) {
+          KeyCypTwo.innerText = 'Tab'
+        }
 
-    if (i === 13) {
-      KeyCypTwo.innerText = "\\"
-    }
+        if (i === 14) {
+          KeyCypTwo.innerText = 'Del'
+        }
 
-    if (i === 12) {
-      KeyCypTwo.innerText = "]"
-    }
+        if (i === 13) {
+          KeyCypTwo.innerText = "\\"
+        }
 
-    if (i === 11) {
-      KeyCypTwo.innerText = "["
-    }
+        if (i === 12) {
+          KeyCypTwo.innerText = "]"
+        }
+
+        if (i === 11) {
+          KeyCypTwo.innerText = "["
+        }
 
     KeyLineTwo.append(KeyCypTwo)
   }
@@ -96,25 +214,81 @@ const KeyBoardBody = document.getElementById('keyboard')
     const KeyCypThree = document.createElement('div')
     const classAtribut = CodeClassThree[i].slice(0,3)
     KeyCypThree.className = `key ${CodeClassThree[i]} ${classAtribut}`
+
+    document.addEventListener('mousedown' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypThree.innerText = CharShiftThree[i]
+      }
+    })
+
+    document.addEventListener('mouseup' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypThree.innerText = String.fromCharCode(CharLineThree[i]).toLocaleLowerCase()
+      }
+
+      if (i === 0) {
+        KeyCypThree.innerText = 'CapsLock'
+      }
+
+      if (i === 10) {
+        KeyCypThree.innerText = ';'
+      }
+
+      if (i === 11) {
+        KeyCypThree.innerText = "'"
+      }
+
+      if (i === 12) {
+        KeyCypThree.innerText = 'Enter'
+      }
+    })
+
+    document.addEventListener('keydown' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypThree.innerText = CharShiftThree[i]
+      }
+    })
+
+    document.addEventListener('keyup' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypThree.innerText = String.fromCharCode(CharLineThree[i])
+        if (i === 0) {
+          KeyCypThree.innerText = 'CapsLock'
+        }
+
+        if (i === 10) {
+          KeyCypThree.innerText = ';'
+        }
+
+        if (i === 11) {
+          KeyCypThree.innerText = "'"
+        }
+
+        if (i === 12) {
+          KeyCypThree.innerText = 'Enter'
+        }
+      }
+    })
+
     KeyCypThree.innerText = String.fromCharCode(CharLineThree[i]).toLocaleLowerCase()
 
-    if (i === 0) {
-      KeyCypThree.innerText = 'Caps Lock'
-    }
+      if (i === 0) {
+        KeyCypThree.innerText = 'CapsLock'
+      }
 
-    if (i === 10) {
-      KeyCypThree.innerText = ';'
-    }
+      if (i === 10) {
+        KeyCypThree.innerText = ';'
+      }
 
-    if (i === 11) {
-      KeyCypThree.innerText = "'"
-    }
+      if (i === 11) {
+        KeyCypThree.innerText = "'"
+      }
 
-    if (i === 12) {
-      KeyCypThree.innerText = 'Enter'
-    }
+      if (i === 12) {
+        KeyCypThree.innerText = 'Enter'
+      }
 
-    KeyLineThree.append(KeyCypThree)
+      KeyLineThree.append(KeyCypThree)
 
   }
 
@@ -126,6 +300,80 @@ const KeyBoardBody = document.getElementById('keyboard')
     const KeyCypFour = document.createElement('div')
     const classAtribut = CodeClassFour[i].slice(0,3)
     KeyCypFour.className = `key ${CodeClassFour[i]} ${classAtribut}`
+
+    document.addEventListener('mousedown' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypFour.innerText = CharShiftFour[i].toLocaleUpperCase()
+      }
+      if (i === 0 || i === 12) {
+        KeyCypFour.innerText = 'Shift'
+      }
+
+      if (i === 11) {
+        KeyCypFour.innerText = '▲'
+      }
+    })
+
+    document.addEventListener('mouseup' ,(event) => {
+      if (event.target.textContent === "Shift") {
+        KeyCypFour.innerText = String.fromCharCode(CharLineFour[i]).toLocaleLowerCase()
+      }
+      if (i === 0 || i === 12) {
+        KeyCypFour.innerText = 'Shift'
+      }
+
+      if (i === 8) {
+        KeyCypFour.innerText = ','
+      }
+
+      if (i === 9) {
+        KeyCypFour.innerText = "."
+      }
+
+      if (i === 10) {
+        KeyCypFour.innerText = '/'
+      }
+
+      if (i === 11) {
+        KeyCypFour.innerText = '▲'
+      }
+    })
+
+    document.addEventListener('keydown' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypFour.innerText = CharShiftFour[i]
+
+        if (i === 11) {
+          KeyCypFour.innerText = '▲'
+        }
+      }
+    })
+
+    document.addEventListener('keyup' , (event) =>{
+      if (event.key === 'Shift') {
+        KeyCypFour.innerText = String.fromCharCode(CharLineFour[i])
+        if (i === 0 || i === 12) {
+          KeyCypFour.innerText = 'Shift'
+        }
+
+        if (i === 8) {
+          KeyCypFour.innerText = ','
+        }
+
+        if (i === 9) {
+          KeyCypFour.innerText = "."
+        }
+
+        if (i === 10) {
+          KeyCypFour.innerText = '/'
+        }
+
+        if (i === 11) {
+          KeyCypFour.innerText = '▲'
+        }
+      }
+    })
+
     KeyCypFour.innerText = String.fromCharCode(CharLineFour[i]).toLocaleLowerCase()
 
     if (i === 0 || i === 12) {
@@ -212,7 +460,7 @@ ArrayKeys.forEach((el) => {
   let result = ''
 
   el.addEventListener('click' , (event) => {
-    if (event.target.innerHTML === "Caps Lock" ||
+    if (event.target.innerHTML === "CapsLock" ||
         event.target.innerHTML === "Ctrl" ||
         event.target.innerHTML === "Alt" ||
         event.target.innerHTML === "Shift" ||
@@ -237,13 +485,15 @@ ArrayKeys.forEach((el) => {
        TextArea.textContent = TextArea.textContent.slice(0,(TextArea.textContent.length) -1)
     }
 
-    if (event.target.classList[1] === "Enter") { console.log('da')
+    if (event.target.classList[1] === "Enter") {
     TextArea.textContent = TextArea.textContent + "\n"
     }
 
-    if (event.target.classList[1] === "Tab") { console.log('da')
+    if (event.target.classList[1] === "Tab") { 
     TextArea.textContent +=   "              "
     }
+
+   
   })
 
   el.addEventListener('mousedown' ,() => {el.classList.add('active')})
@@ -294,9 +544,14 @@ document.addEventListener('keydown' , (event) => {
  }
 })
 
+document.onkeydown = evt => {
+  if (evt.key == 'Alt') {
+      evt.preventDefault();
+  }
+}
+
 const lettersKey = document.querySelectorAll('.Key')
 const ArrayLettersKey = Array.from(lettersKey)
-
 
 document.addEventListener('keyup', (event) => {
 
@@ -325,6 +580,56 @@ document.querySelector('.CapsLock').addEventListener('click', () => {
     }
  })
 
+const shiftLeft = document.querySelector('.ShiftLeft')
+const shiftRight = document.querySelector('.ShiftRight')
+document.addEventListener('keydown', (event) => { 
+ if (event.code === "ShiftLeft" || event.code === "ShiftRight") { 
+
+  shiftLeft.classList.add('activeshift')
+  ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleUpperCase()
+   })
+ }
+})
+
+document.addEventListener('keyup', (event) => { 
+  if (event.code === "ShiftLeft" || event.code === "ShiftRight") { 
+   shiftLeft.classList.remove('activeshift')
+   ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleLowerCase()
+   })
+  }
+ })
+
+ shiftLeft.addEventListener('mousedown' , () => { 
+  ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleUpperCase()
+   })
+ })
+
+ shiftLeft.addEventListener('mouseup' , () => { 
+  ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleLowerCase()
+   })
+ })
+
+ shiftRight.addEventListener('mousedown' , () => { 
+  ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleUpperCase()
+   })
+ })
+
+ shiftRight.addEventListener('mouseup' , () => { 
+  ArrayLettersKey.forEach((el) => {
+    el.textContent = el.textContent.toLocaleLowerCase()
+   })
+ })
 
 
+let result = []
 
+
+// document.addEventListener('keyup', (event) => {
+// result.push(event.key)
+// console.log(result)
+// })
