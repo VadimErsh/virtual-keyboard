@@ -12,6 +12,9 @@ const CharShiftOne = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_'
 const CharShiftTwo =['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'Delete']
 const CharShiftThree =['CapsLock','A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter']
 const CharShiftFour =['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?', 'ArrowUp', 'Shift']
+const ruLineTwo= ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'Del']
+const ruLineThree= ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter']
+const ruLineFour = ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift']
 const KeyBoardBody = document.getElementById('keyboard')
 
  const getKeyBoardContent = () => {
@@ -73,15 +76,26 @@ const KeyBoardBody = document.getElementById('keyboard')
       if (event.key === 'Shift') {
         KeyCypOne.innerText = CharShiftOne[i]
       }
+
+      const Backquote = document.querySelector('.Backquote')
+
+      if (event.ctrlKey === true && event.altKey === true) {
+        Backquote.textContent = 'ё'
+        Backquote.classList.add('ru')
+      }
     })
+
+    
 
     document.addEventListener('keyup' , (event) =>{
       if (event.key === 'Shift') {
         KeyCypOne.innerText = String.fromCharCode(CharLineOne[i])
       }
+
       if (i === 13) {
         KeyCypOne.innerText = 'Backspace'
       }
+
     })
 
     KeyCypOne.innerText = String.fromCharCode(CharLineOne[i])
@@ -112,6 +126,7 @@ const KeyBoardBody = document.getElementById('keyboard')
       if (i === 14) {
         KeyCypTwo.innerText = 'Del'
       }
+
     })
 
     document.addEventListener('mouseup' ,(event) => {
@@ -142,6 +157,11 @@ const KeyBoardBody = document.getElementById('keyboard')
     })
 
     document.addEventListener('keydown' , (event) =>{
+
+      if (event.ctrlKey === true && event.altKey === true) {
+        KeyCypTwo.innerText = ruLineTwo[i]
+      }
+
       if (event.key === 'Shift') {
         KeyCypTwo.innerText = CharShiftTwo[i]
       }
@@ -247,6 +267,10 @@ const KeyBoardBody = document.getElementById('keyboard')
       if (event.key === 'Shift') {
         KeyCypThree.innerText = CharShiftThree[i]
       }
+
+      if (event.ctrlKey === true && event.altKey === true) {
+        KeyCypThree.innerText = ruLineThree[i]
+      }
     })
 
     document.addEventListener('keyup' , (event) =>{
@@ -302,6 +326,7 @@ const KeyBoardBody = document.getElementById('keyboard')
     KeyCypFour.className = `key ${CodeClassFour[i]} ${classAtribut}`
 
     document.addEventListener('mousedown' ,(event) => {
+
       if (event.target.textContent === "Shift") {
         KeyCypFour.innerText = CharShiftFour[i].toLocaleUpperCase()
       }
@@ -343,6 +368,13 @@ const KeyBoardBody = document.getElementById('keyboard')
       if (event.key === 'Shift') {
         KeyCypFour.innerText = CharShiftFour[i]
 
+        if (i === 11) {
+          KeyCypFour.innerText = '▲'
+        }
+      }
+
+      if (event.ctrlKey === true && event.altKey === true) {
+        KeyCypFour.innerText = ruLineFour[i]
         if (i === 11) {
           KeyCypFour.innerText = '▲'
         }
@@ -629,7 +661,13 @@ document.addEventListener('keyup', (event) => {
 let result = []
 
 
-// document.addEventListener('keyup', (event) => {
-// result.push(event.key)
-// console.log(result)
-// })
+document.addEventListener('keyup', (event) => { 
+result.push(event.key)
+console.log(result)
+})
+
+
+//  ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\']
+
+// ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter']
+//  ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'ArrowUp', 'Shift']
