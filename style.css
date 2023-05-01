@@ -1,0 +1,135 @@
+.body {
+  margin: 0;
+}
+
+.key-board-content {
+  width: 800px;
+  margin: 0 auto;
+  font-family: "Trebuchet MS", "Helvetica", sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  display: flex;
+}
+
+.k-key-block {
+  width: 695px;
+  background-color: #FFE040;
+  border: 3px solid #FFAD00;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.textarea {
+  width: 695px;
+  height: 150px;
+}
+
+.key {
+  width: 40px;
+  height: 40px;
+  border-radius: 2px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFAD00;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.key:hover {
+  background-color: #FF7800;
+  transition: 0.3s;
+}
+
+.key:focus {
+  background-color: red;
+  transition: 0.3s;
+}
+
+.line {
+  margin-top: 5px;
+}
+
+.Backspace {
+  width: 100px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.Tab {
+  width: 50px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.Delete {
+  width: 45px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.CapsLock {
+  width: 100px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.CapsLock.activecaps {
+  background-color: #ff9a40;
+  border-radius: 50px;
+}
+
+.Enter {
+  width: 85px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.ShiftLeft {
+  width: 100px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.ShiftLeft.activeshift {
+  background-color: #ff9a40;
+  border-radius: 50px;
+}
+
+.key.active {
+  background-color: #ff9a40;
+  border-radius: 50px;
+}
+
+.ShiftRight {
+  width: 85px;
+  background-color: #A64E00;
+  border: 0px;
+}
+
+.Space {
+  width: 325px;
+  border: 0px;
+}
+
+.line-five {
+  margin-bottom: 5px;
+}
+
+.ControlLeft,
+.ControlRight,
+.AltLeft,
+.AltRight,
+.ArrowUp,
+.ArrowLeft,
+.ArrowDown,
+.ArrowRight,
+.MetaLeft {
+  background-color: #A64E00;
+}
